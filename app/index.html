@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Companion OS</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Content Security Policy: allow fetch to localhost CompanionClaw only -->
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; connect-src http://localhost:18789; script-src 'self'; style-src 'self' 'unsafe-inline';" />
+</head>
+<body>
+  <div id="root"></div>
+  <script src="app.js"></script>
+</body>
+</html>

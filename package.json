@@ -1,0 +1,60 @@
+{
+  "name": "companion-desktop",
+  "version": "1.0.0",
+  "description": "Companion OS — local desktop app powered by CompanionClaw",
+  "main": "dist/electron/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "concurrently \"npm run build:watch\" \"sleep 3 && electron .\"",
+    "build": "tsc -p tsconfig.json",
+    "build:watch": "tsc -p tsconfig.json --watch",
+    "pack": "npm run build && electron-builder --dir",
+    "dist:win": "npm run build && electron-builder --win",
+    "dist:mac": "npm run build && electron-builder --mac",
+    "dist:linux": "npm run build && electron-builder --linux"
+  },
+  "build": {
+    "appId": "xyz.companion-os.desktop",
+    "productName": "Companion OS",
+    "copyright": "© 2026 Companion OS",
+    "directories": { "output": "release" },
+    "files": ["dist/**/*", "app/**/*", "resources/**/*"],
+    "extraResources": [
+      { "from": "../companionclaw/dist", "to": "companionclaw/dist", "filter": ["**/*"] },
+      { "from": "../companionclaw/package.json", "to": "companionclaw/package.json" },
+      { "from": "../companionclaw/node_modules", "to": "companionclaw/node_modules", "filter": ["**/*"] }
+    ],
+    "win": {
+      "target": [{ "target": "nsis", "arch": ["x64"] }],
+      "icon": "resources/icon.ico"
+    },
+    "mac": {
+      "target": [{ "target": "dmg", "arch": ["x64", "arm64"] }],
+      "icon": "resources/icon.icns",
+      "category": "public.app-category.productivity"
+    },
+    "linux": {
+      "target": [{ "target": "AppImage", "arch": ["x64"] }],
+      "icon": "resources/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  },
+  "keywords": [],
+  "author": "Companion OS",
+  "license": "MIT",
+  "dependencies": {
+    "electron-updater": "^6.3.9"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "concurrently": "^9.0.0",
+    "electron": "^33.0.0",
+    "electron-builder": "^25.1.8",
+    "typescript": "^5.0.0"
+  }
+}

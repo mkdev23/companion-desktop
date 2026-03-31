@@ -1,0 +1,8 @@
+node_modules/
+dist/
+release/
+resources/*.ico
+resources/*.icns
+resources/*.png
+!resources/README.md
+.env
