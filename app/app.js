@@ -412,6 +412,8 @@ async function sendMessage() {
         userId: session.userId,
         message: text,
         history: chatHistory.slice(0, -1), // exclude current turn (already passed as message)
+        clientType: 'desktop',
+        platform: navigator.platform ?? 'win32',
       }),
     });
 
