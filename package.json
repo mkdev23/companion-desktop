@@ -9,7 +9,7 @@
     "build": "tsc -p tsconfig.json",
     "build:watch": "tsc -p tsconfig.json --watch",
     "pack": "npm run build && electron-builder --dir",
-    "dist:win": "npm run build && electron-builder --win",
+    "dist:win": "npm run build && electron-packager . \"Companion OS\" --platform=win32 --arch=x64 --out=release/packager --overwrite --icon=resources/icon.png --app-version=1.0.0 --ignore=\"release|node_modules/.bin\" && powershell -Command \"Compress-Archive -Path 'release/packager/Companion OS-win32-x64' -DestinationPath release/CompanionOS-win32-x64.zip -Force\"",
     "dist:mac": "npm run build && electron-builder --mac",
     "dist:linux": "npm run build && electron-builder --linux"
   },
@@ -17,24 +17,67 @@
     "appId": "xyz.companion-os.desktop",
     "productName": "Companion OS",
     "copyright": "© 2026 Companion OS",
-    "directories": { "output": "release" },
-    "files": ["dist/**/*", "app/**/*", "resources/**/*"],
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "app/**/*",
+      "resources/**/*"
+    ],
     "extraResources": [
-      { "from": "../companionclaw/dist", "to": "companionclaw/dist", "filter": ["**/*"] },
-      { "from": "../companionclaw/package.json", "to": "companionclaw/package.json" },
-      { "from": "../companionclaw/node_modules", "to": "companionclaw/node_modules", "filter": ["**/*"] }
+      {
+        "from": "../companionclaw/dist",
+        "to": "companionclaw/dist",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "../companionclaw/package.json",
+        "to": "companionclaw/package.json"
+      },
+      {
+        "from": "../companionclaw/node_modules",
+        "to": "companionclaw/node_modules",
+        "filter": [
+          "**/*"
+        ]
+      }
     ],
     "win": {
-      "target": [{ "target": "nsis", "arch": ["x64"] }],
-      "icon": "resources/icon.ico"
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "resources/icon.png"
     },
     "mac": {
-      "target": [{ "target": "dmg", "arch": ["x64", "arm64"] }],
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ],
       "icon": "resources/icon.icns",
       "category": "public.app-category.productivity"
     },
     "linux": {
-      "target": [{ "target": "AppImage", "arch": ["x64"] }],
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
       "icon": "resources/icon.png"
     },
     "nsis": {
@@ -51,6 +94,7 @@
     "electron-updater": "^6.3.9"
   },
   "devDependencies": {
+    "@electron/packager": "^19.1.0",
     "@types/node": "^20.0.0",
     "concurrently": "^9.0.0",
     "electron": "^33.0.0",
