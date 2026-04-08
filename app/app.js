@@ -85,7 +85,7 @@ function renderStep1(root) {
       <div class="card">
         <div class="steps">${stepBars(1, 3)}</div>
         <div>
-          <div class="label-sm accent" style="margin-bottom:8px">CompanionClaw</div>
+          <div class="label-sm accent" style="margin-bottom:8px">Companion OS</div>
           <h2>Choose your companion</h2>
           <p style="margin-top:6px">Pick a name and personality. You can change these later.</p>
         </div>
