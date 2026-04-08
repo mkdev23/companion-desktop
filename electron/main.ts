@@ -79,6 +79,7 @@ function createWindow(): void {
     height: 780,
     minWidth:  800,
     minHeight: 600,
+    title: 'CompanionClaw',
     backgroundColor: '#0a0e1a',
     titleBarStyle: 'hiddenInset',
     webPreferences: {
@@ -128,12 +129,12 @@ function createTray(): void {
     : nativeImage.createEmpty();
 
   tray = new Tray(icon);
-  tray.setToolTip('Companion OS');
+  tray.setToolTip('CompanionClaw');
 
   const menu = Menu.buildFromTemplate([
-    { label: 'Open Companion OS', click: () => { mainWindow?.show(); mainWindow?.focus(); } },
+    { label: 'Open CompanionClaw', click: () => { mainWindow?.show(); mainWindow?.focus(); } },
     { type: 'separator' },
-    { label: `Backend: ${CLAW_URL}`, enabled: false },
+    { label: 'CompanionClaw running locally', enabled: false },
     { type: 'separator' },
     { label: 'Quit', click: () => { tray = null; app.quit(); } },
   ]);

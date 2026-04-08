@@ -1,7 +1,7 @@
 {
   "name": "companion-desktop",
   "version": "1.0.0",
-  "description": "Companion OS — local desktop app powered by CompanionClaw",
+  "description": "CompanionClaw — local desktop AI companion",
   "main": "dist/electron/main.js",
   "scripts": {
     "start": "electron .",
@@ -15,9 +15,9 @@
     "dist:linux": "npm run build && electron-builder --linux"
   },
   "build": {
-    "appId": "xyz.companion-os.desktop",
-    "productName": "Companion OS",
-    "copyright": "© 2026 Companion OS",
+    "appId": "xyz.companionclaw.desktop",
+    "productName": "CompanionClaw",
+    "copyright": "© 2026 CompanionClaw",
     "directories": {
       "output": "release"
     },
@@ -90,7 +90,7 @@
     }
   },
   "keywords": [],
-  "author": "Companion OS",
+  "author": "CompanionClaw",
   "license": "MIT",
   "dependencies": {
     "electron-updater": "^6.3.9"
